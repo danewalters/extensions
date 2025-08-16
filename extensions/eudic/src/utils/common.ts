@@ -36,6 +36,8 @@ export const execEudicScriptsWithWord = (executor: EudicExecutor) => async (word
       `,
     );
   } else {
-    open(`${executor.url}/${target}`);
+    // Encode the target to prevent special characters from causing jump failures
+    const encodedTarget = encodeURIComponent(target);
+    open(`${executor.url}/${encodedTarget}`);
   }
 };
